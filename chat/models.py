@@ -20,4 +20,4 @@ class Friends(models.Model):
     )
 
     def __str__(self):
-        return f"(self.friend)"
+        return f"{self.friend}"
