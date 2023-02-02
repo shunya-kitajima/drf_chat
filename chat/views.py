@@ -1,5 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from accounts.models import CustomUser
+
+
+def get_friends_list(username):
+    try:
+        user = CustomUser.objects.get(username=username)
+        friends = list(user.user_friends.all())
+        return friends
+    except friends:
+        return []
 
 
 class Home(TemplateView):
