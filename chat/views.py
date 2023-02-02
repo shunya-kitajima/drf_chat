@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.views import View
 from accounts.models import CustomUser
 
 
@@ -18,4 +19,7 @@ class Home(TemplateView):
 
 class ChatRoom(TemplateView):
     template_name = "chat/chat_box.html"
+
+
+class SearchUser(TemplateView):
 
