@@ -115,3 +115,5 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGIN_REDIRECT_URL = "/chat_room/"
 LOGOUT_REDIRECT_URL = "/"
+
+MEDIA_URL = "/media/"
