@@ -8,4 +8,5 @@ urlpatterns = [
     path("", Home.as_view(), name="home"),
     path("chat_room/", ChatRoom.as_view(), name="chat_room"),
     path("search/", SearchUser.as_view(), name="search_user"),
+    path("addFriend/<str:username>", add_friend, name="addfriend"),
 ]
