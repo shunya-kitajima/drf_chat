@@ -113,7 +113,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
-LOGIN_REDIRECT_URL = "/chat_room/"
+LOGIN_REDIRECT_URL = "/search/"
 LOGOUT_REDIRECT_URL = "/"
 
 MEDIA_URL = "/media/"
