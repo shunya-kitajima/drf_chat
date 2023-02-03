@@ -22,7 +22,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">{{ user.username}}さん</a></li>
           <li class="nav-item">
-            <a class="nav-link" href="#">検索</a></li>
+            <a class="nav-link" href="{% url 'chat:search_user' %}">検索</a></li>
           <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">ログアウト</a></li>
           <li class="nav-item">
