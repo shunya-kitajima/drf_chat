@@ -42,6 +42,7 @@ def get_message(request, username):
             "messages": messages,
             "friends": friends,
             "current_user": current_user,
+            "friend": friend,
         },
     )
 
