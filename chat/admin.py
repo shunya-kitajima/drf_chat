@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Friends
 
 
-class FriendAdmin(admin, Friends):
+class FriendAdmin(admin.ModelAdmin):
     list_display = ("pk", "user", "friend")
 
 
