@@ -22,4 +22,20 @@ class ChatRoom(TemplateView):
 
 
 class SearchUser(TemplateView):
+    def get(self, request, *args, **kwargs):
+        if "search" in self.request.GET:
+            query = request.GET.get("search")
+            users = list(CustomUser.objects.all())
+            user_list = []
+            for user in users:
+                if query in user.username and user.username != request.user.username:
+                    user_list.append(user)
+        else:
+            user_list = list(CustomUser.objects.all())
+            for user in user_list:
+                if user.username == request.user.username:
+                    user_list.remove(user)
+                    break
 
+        friends = get_friends_list(request.user.username)
+        return render(request, "chat/search.html", {"users": user_list, "friends": friends})
