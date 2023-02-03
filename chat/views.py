@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views import View
 from accounts.models import CustomUser
@@ -11,6 +11,22 @@ def get_friends_list(username):
         return friends
     except friends:
         return []
+
+
+def add_friend(request, username):
+    login_user = request.user
+    friend = CustomUser.objects.get(username=username)
+    current_user = CustomUser.objects.get(username=login_user)
+    friend_lists = current_user.user_friends.all()
+    flag = 0
+    for friend_list in friend_lists:
+        if friend_list.friend.pk == friend.pk:
+            flag = 1
+            break
+    if flag == 0:
+        current_user.user_friends.create(friend=friend)
+        friend.user_friends.create(friend=current_user)
+    return redirect("chat:search_user")
 
 
 class Home(TemplateView):
