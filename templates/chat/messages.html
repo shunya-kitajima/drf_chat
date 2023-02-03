@@ -28,10 +28,13 @@
     {% endfor %}
   </div>
   <div class="type_msg">
-    <div class="input_msg_write">
-      <input type="text" class="write_msg" placeholder="メッセージを入力してください。" />
-      <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+    <form method="post" class="form-group" id="chat-box">
+      {% csrf_token %}
+      <div class="input_msg_write">
+        <input type="text" class="write_msg" placeholder="メッセージを送信..." name="message" id="msg_field" />
+        <button type="submit" class="msg_send_btn" name="send"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
     </div>
+    </form>
   </div>
 </div>
 {% endblock %}
