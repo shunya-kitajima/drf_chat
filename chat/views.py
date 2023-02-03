@@ -14,7 +14,7 @@ def get_friends_list(username):
 
 
 def add_friend(request, username):
-    login_user = request.user
+    login_user = request.user.username
     friend = CustomUser.objects.get(username=username)
     current_user = CustomUser.objects.get(username=login_user)
     friend_lists = current_user.user_friends.all()
