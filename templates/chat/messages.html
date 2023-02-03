@@ -7,24 +7,24 @@
 <div class="mesgs">
   <div class="msg_history">
     {% for message in messages %}
-    {% if friend == message.sender_name %}
-    <div class="incoming_msg">
-      <div class="incoming_msg_img"><img src="{{ friend.thumbnail.url }}" alt="sunil"></div>
-      <div class="received_msg">
-        <div class="received_withd_msg">
-          <p>{{message.description}}</p>
-          <span class="time_date">{{message.time}}</span>
+      {% if friend == message.sender_name %}
+        <div class="incoming_msg">
+          <div class="incoming_msg_img"><img src="{{ friend.thumbnail.url }}" alt="sunil"></div>
+          <div class="received_msg">
+            <div class="received_withd_msg">
+              <p>{{message.description}}</p>
+              <span class="time_date">{{message.time}}</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    {% else %}
-    <div class="outgoing_msg">
-      <div class="sent_msg">
-        <p>{{message.description}}</p>
-        <span class="time_date">{{message.time}}</span>
-      </div>
-    </div>
-    {% endif %}
+      {% else %}
+        <div class="outgoing_msg">
+          <div class="sent_msg">
+            <p>{{message.description}}</p>
+            <span class="time_date">{{message.time}}</span>
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
   <div class="type_msg">
