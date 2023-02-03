@@ -1,9 +1,14 @@
 from django.contrib import admin
-from .models import Friends
+from .models import Friends, Messages
 
 
-class FriendAdmin(admin.ModelAdmin):
+class FriendsAdmin(admin.ModelAdmin):
     list_display = ("pk", "user", "friend")
 
 
-admin.site.register(Friends, FriendAdmin)
+class MessagesAdmin(admin.ModelAdmin):
+    list_display = ("pk", "description", "sender_name", "receiver_name", "time", "seen", "timestamp")
+
+
+admin.site.register(Friends, FriendsAdmin)
+admin.site.register(Messages, MessagesAdmin)
