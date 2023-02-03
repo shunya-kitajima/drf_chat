@@ -43,7 +43,7 @@
             </div>
             <div class="inbox_chat">
               {% for friend in friends %}
-                <a href="#">
+                <a href="{% url 'chat:get_message' friend.friend.username %}">
                   <div class="chat_list">
                     <div class="chat_people">
                       <div class="chat_img"><img src="{{ friend.friend.thumbnail.url }}" alt="sunil"></div>
