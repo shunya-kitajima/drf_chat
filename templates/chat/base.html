@@ -42,30 +42,18 @@
               </div>
             </div>
             <div class="inbox_chat">
-              <div class="chat_list active_chat">
-                <div class="chat_people">
-                  <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                  <div class="chat_ib">
-                    <h5>AAA </h5>
+              {% for friend in friends %}
+                <a href="#">
+                  <div class="chat_list">
+                    <div class="chat_people">
+                      <div class="chat_img"><img src="{{ friend.friend.thumbnail,url }}" alt="sunil"></div>
+                      <div class="chat_ib">
+                        <h5>{{ friend.friend.username }}</h5>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="chat_list">
-                <div class="chat_people">
-                  <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                  <div class="chat_ib">
-                    <h5>BBB </h5>
-                  </div>
-                </div>
-              </div>
-              <div class="chat_list">
-                <div class="chat_people">
-                  <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                  <div class="chat_ib">
-                    <h5>CCC </h5>
-                  </div>
-                </div>
-              </div>
+                </a>
+              {% endfor %}
             </div>
           </div>
           {% block contents%}{% endblock %}
