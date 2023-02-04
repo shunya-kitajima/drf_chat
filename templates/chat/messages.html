@@ -37,4 +37,38 @@
     </form>
   </div>
 </div>
+<script>
+  sender_id = "{{ friend.id }}"
+  receiver_id = "{{ current_user.id }}"
+  const text_box = '<div class="outgoing_msg">' +
+    '<div class="sent_msg">' +
+    '<p>{description}</p>' +
+    '<span class="time_date">{time}</span>' +
+    '</div>' +
+    '</div>'
+
+  const send = (sender, receiver, message) => {
+    $.post(
+      "/api/messages",
+      '{"sender_name": "' + sender + '", "receiver_name": "' + receiver + '","description": "' + message + '" }',
+      (data) => {
+        let field = text_box.replace("{description}", message)
+        let today = new Date()
+        let time = today.getHours() + ":" + today.getMinutes()
+        field = field.replace("{time}", time)
+        $("#board").append(field)
+      }
+    )
+  }
+
+
+  $(() => {
+    $("#chat-box").on("submit", function (event) {
+      event.preventDefault()
+      let message = $("#msg_field")
+      send("{{ current_user.id }}", "{{ friend.id }}", message.val())
+      message.val("")
+    })
+  })()
+</script>
 {% endblock %}
