@@ -10,4 +10,5 @@ urlpatterns = [
     path("search/", SearchUser.as_view(), name="search_user"),
     path("addfriend/<str:username>", add_friend, name="addfriend"),
     path("chat/<str:username>", get_message, name="get_message"),
+    path("api/messages", UpdateMessage.as_view()),
 ]
