@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views import View
+from django.http.response import JsonResponse
+from rest_framework.parsers import JSONParser
 from accounts.models import CustomUser
 from .models import Messages
+from chat.serializers import MessageSerializer
 
 
 def get_friends_list(username):
@@ -80,3 +83,15 @@ class SearchUser(TemplateView):
                 "friends": friends,
             },
         )
+
+
+class UpdateMessage(View):
+    def post(self, request, *args, **kwargs):
+        data = JSONParser().parse(request)
+        serializer = MessageSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+
+        return JsonResponse(serializer.errors, status=400)
